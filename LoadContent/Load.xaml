@@ -1,0 +1,30 @@
+<Window x:Class="LoadContent.Loaddown"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoadContent"
+        mc:Ignorable="d"
+        Title="打开文本文件" Height="466" Width="800">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Label Content="文件名:"></Label>
+            <TextBox x:Name="tb_path" Text="{Binding txtpath,UpdateSourceTrigger=PropertyChanged}" Width="350"></TextBox>
+            <Button x:Name="bt_LoadText" Content="..." Click="bt_LoadText_Click" Width="20"></Button>
+            <Label Content="              编码："/>
+            <ComboBox DockPanel.Dock="Left" Name="cbx_encode" Width="150"
+                      ItemsSource="{Binding Encodings}" 
+                      SelectedIndex="2"
+                      DisplayMemberPath="EncodingName" />
+        </DockPanel>
+        <TextBox DockPanel.Dock="Top" x:Name="tb_content"
+                 Text="{Binding Content,UpdateSourceTrigger=PropertyChanged}"
+                 TextWrapping="Wrap" 
+                 AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Visible" Height="375"/>
+        <DockPanel DockPanel.Dock="Top">
+            <Button x:Name="bt_Ok" Content="确认" Click="bt_Ok_Click" Width="400"/>
+            <Button x:Name="bt_Cancle" Content="取消" Click="bt_Cancle_Click" Width="400"/>
+        </DockPanel>
+    </DockPanel>
+</Window>
